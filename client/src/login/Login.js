@@ -112,7 +112,9 @@ export default class Login extends Component {
         }
 
         return (
-            <div>
+            /* START - Modified by Tim */
+            <div style={{width: '600px', margin: '0 auto'}}>
+            /* END - Modified by Tim */
                 <Title>{t('signIn')}</Title>
 
                 <Form stateOwner={this} onSubmitAsync={::this.submitHandler}>

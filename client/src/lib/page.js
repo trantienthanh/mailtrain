@@ -186,9 +186,9 @@ function renderFrameWithContent(t, panelInFullScreen, showSidebar, primaryMenu, 
                             <span className="navbar-toggler-icon"/>
                         </button>
                         }
-
-                        <Link className="navbar-brand" to="/"><div><Icon icon="envelope"/> Mailtrain</div></Link>
-
+                        {/* START - Modified by Tim */}
+                        <Link className="navbar-brand" to="/"><div><Icon icon="envelope"/> Integra</div></Link>
+                        {/* END - Modified by Tim */}
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mtMainNavbar" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"/>
                         </button>
@@ -211,7 +211,9 @@ function renderFrameWithContent(t, panelInFullScreen, showSidebar, primaryMenu, 
                 </div>
 
                 <footer key="appFooter" className="app-footer">
-                    <div className="text-muted">&copy; 2018 <a href="https://mailtrain.org">Mailtrain.org</a>, <a href="mailto:info@mailtrain.org">info@mailtrain.org</a>. <a href="https://github.com/Mailtrain-org/mailtrain">{t('sourceOnGitHub')}</a></div>
+                    {/* START - Modified by Tim */}
+                    <div className="text-muted">&copy; 2019 Integra. All right reserved.</div>
+                    {/* END - Modified by Tim */}
                 </footer>
             </div>
         );
@@ -705,6 +707,8 @@ export const requiresAuthenticatedUser = createComponentMixin({
 });
 
 export function getLanguageChooser(t) {
+    {/* START - Modified by Tim */}
+    {/*
     const languageOptions = [];
     for (const lng of mailtrainConfig.enabledLanguages) {
         const langDesc = getLang(lng);
@@ -724,4 +728,7 @@ export function getLanguageChooser(t) {
     );
 
     return languageChooser;
+    */}
+    return null;
+    {/* END - Modified by Tim */}
 }

@@ -91,7 +91,9 @@ class Root extends Component {
                                 </NavDropdown>
                             </ul>
                             <ul className="navbar-nav mt-navbar-nav-right">
-                                {getLanguageChooser(t)}
+                                {/* START - Modified by Tim */}
+                                {/*getLanguageChooser(t)*/}
+                                {/* END - Modified by Tim */}
                                 <NavDropdown menuClassName="dropdown-menu-right" label={mailtrainConfig.user.username} icon="user">
                                     <DropdownLink to="/account"><Icon icon='user'/> {t('account')}</DropdownLink>
                                     <DropdownActionLink onClickAsync={::this.logout}><Icon icon='sign-out-alt'/> {t('logOut')}</DropdownActionLink>
@@ -103,7 +105,9 @@ class Root extends Component {
                     return (
                         <>
                             <ul className="navbar-nav mt-navbar-nav-right">
-                                {getLanguageChooser(t)}
+                                {/* START - Modified by Tim */}
+                                {/*getLanguageChooser(t)*/}
+                                {/* END - Modified by Tim */}
                             </ul>
                         </>
                     );
