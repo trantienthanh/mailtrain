@@ -707,7 +707,7 @@ export const requiresAuthenticatedUser = createComponentMixin({
 });
 
 export function getLanguageChooser(t) {
-    {/* START - Modified by Tim */}
+    // START - Modified by Tim
     {/*
     const languageOptions = [];
     for (const lng of mailtrainConfig.enabledLanguages) {
@@ -730,5 +730,5 @@ export function getLanguageChooser(t) {
     return languageChooser;
     */}
     return null;
-    {/* END - Modified by Tim */}
+    // END - Modified by Tim
 }

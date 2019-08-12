@@ -105,9 +105,9 @@ class Root extends Component {
                     return (
                         <>
                             <ul className="navbar-nav mt-navbar-nav-right">
-                                {/* START - Modified by Tim */}
+                                // START - Modified by Tim
                                 {/*getLanguageChooser(t)*/}
-                                {/* END - Modified by Tim */}
+                                // END - Modified by Tim
                             </ul>
                         </>
                     );
