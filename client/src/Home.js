@@ -19,15 +19,12 @@ export default class List extends Component {
 
         return (
             <div>
-<<<<<<< HEAD
                 {/* START - Modified by Tim */}
                 <h2>Integra Newsletter & Email Marketing Platform</h2>
                 <div>This page is under development.</div>
                 {/* END - Modified by Tim */}
-=======
                 <h2>{t('Mailtrain 2 beta')}</h2>
                 <div>{t('Build') + ' 2019-09-05-1547'}</div>
->>>>>>> cdd57224f6a5f846a8c4e269ab1f07eaccdc8493
             </div>
         );
     }
