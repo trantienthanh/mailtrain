@@ -83,14 +83,34 @@ export default class Statistics extends Component {
             );
         }
 
-        const renderMetricsWithProgress = (key, label, progressBarClass, showZoomIn = true) => {
-            const val = entity[key]
+        {/* START - Modified by Tim */}
+        const renderDeliveredMetrics = () => {
+            const val = total - entity['bounced']
 
+            return (
+                <AlignedRow label='Delivered'><span className={styles.statsMetrics}>{val}</span><span className={styles.zoomIn}><Link to={`/campaigns/${entity.id}/statistics/delivered`}><Icon icon="search-plus"/></Link></span></AlignedRow>
+          );
+        }
+        {/* END - Modified by Tim */}
+
+        const renderMetricsWithProgress = (key, label, progressBarClass, showZoomIn = true) => {
             if (!total) {
                 return renderMetrics(key, label);
             }
 
-            const rate = Math.round(val / total * 100);
+            {/* START - Modified by Tim */}
+            const total_delivered = total - entity['bounced'];
+            let val = entity[key];
+            let rate = Math.round(val / total_delivered * 100);
+
+            if (key == 'delivered') {
+                val = total - entity['bounced']
+            }
+
+            if (key == 'bounced' || key == 'delivered') {
+                rate = Math.round(val / total * 100);
+            }
+            {/* END - Modified by Tim */}
 
             return (
                 <AlignedRow label={label}>
@@ -112,14 +132,15 @@ export default class Statistics extends Component {
                 <Title>{t('campaignStatistics')}</Title>
 
                 {renderMetrics('total', t('total'), false)}
-                {renderMetrics('delivered', t('delivered'))}
-                {renderMetrics('blacklisted', t('blacklisted'), false)}
-                {renderMetricsWithProgress('bounced', t('bounced'), 'info')}
-                {renderMetricsWithProgress('complained', t('complaints'), 'danger')}
-                {renderMetricsWithProgress('unsubscribed', t('unsubscribed'), 'warning')}
-                {!entity.open_tracking_disabled && renderMetricsWithProgress('opened', t('opened'), 'success')}
-                {!entity.click_tracking_disabled && renderMetricsWithProgress('clicks', t('clicked'), 'success')}
-
+                {renderMetricsWithProgress('delivered', t('delivered'))}
+                {/* renderDeliveredMetrics() */}
+                {/* START - Modified by Tim renderMetrics('blacklisted', t('blacklisted'), false) */}
+                {renderMetricsWithProgress('bounced', 'Total '+t('bounced'), 'info')}
+                {renderMetricsWithProgress('complained', t('complaints')+' for Delivered', 'danger')}
+                {renderMetricsWithProgress('unsubscribed', t('unsubscribed')+' for Delivered', 'warning')}
+                {!entity.open_tracking_disabled && renderMetricsWithProgress('opened', t('opened')+' for Delivered', 'success')}
+                {!entity.click_tracking_disabled && renderMetricsWithProgress('clicks', t('clicked')+' for Delivered', 'success')}
+                {/* END - Modified by Tim */}
                 <hr/>
 
                 <h3>{t('quickReports')}</h3>

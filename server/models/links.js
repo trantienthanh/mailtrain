@@ -151,7 +151,11 @@ async function updateLinks(source, tagLanguage, mergeTags, campaign, list, subsc
         let inserted = false;
         const imgUrl = getPublicUrl(`/links/${campaign.cid}/${list.cid}/${subscription.cid}`);
         const img = '<img src="' + imgUrl + '" width="1" height="1" alt="mt">';
+        /* START - Modified by Tim
         source = source.replace(/<\/body\b/i, match => {
+        */
+        source = source.replace(/<\/center\b/i, match => {
+        /* END - Modified by Tim */
             inserted = true;
             return img + match;
         });

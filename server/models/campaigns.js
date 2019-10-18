@@ -743,7 +743,11 @@ statusFieldMapping.set(CampaignMessageStatus.COMPLAINED, 'complained');
 async function _changeStatusByMessageTx(tx, context, message, campaignMessageStatus) {
     enforce(statusFieldMapping.has(campaignMessageStatus));
 
+    /* START - Modified by Tim
     if (message.status === SubscriptionStatus.SENT) {
+    */
+    if (message.status === CampaignMessageStatus.SENT) {
+    /* END - Modified by Tim */
         await shares.enforceEntityPermissionTx(tx, context, 'campaign', message.campaign, 'manageMessages');
 
         const statusField = statusFieldMapping.get(campaignMessageStatus);
